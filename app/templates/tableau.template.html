@@ -1,0 +1,56 @@
+
+<h1 id="titre"><span class="glyphicon glyphicon-th"></span> Stations Vélib</h1>
+<h3 id="titre">Disponibilités en temps réel</h3>
+<br><br>
+
+<table ng-table="tableParams" class="table table-condensed table-bordered table-hover" show-filter="false"> 
+    <colgroup>
+        <col width="10%" />
+        <col width="10%" />
+        <col width="5%" />
+        <col width="5%" />
+        <col width="15%" />
+        <col width="5%" />
+        <col width="5%" />
+        <col width="5%" />
+        <col width="10%" />
+        <col width="10%" />
+        <col width="30%" />
+    </colgroup>
+    <tr ng-repeat="station in $data" ng-repeat-end>
+        <td data-title="'Ville'" sortable="'contract_name'">
+            {{station.contract_name}}
+        </td>
+        <td data-title="'Nom'" sortable="'name'">
+            {{station.name}}
+        </td>
+        <td data-title="'Numéro'" sortable="'number'">
+            {{station.number}}
+        </td>
+        <td data-title="'Status'" sortable="'status'">
+            {{station.status}}
+        </td>
+        <td data-title="'Mise à jour'">
+            {{station.last_update | date:'d/M/yyyy HH:mm:ss'}}
+        </td>
+        <td data-title="'Bonus'" sortable="'bonus'">
+            {{station.bonus}}
+        </td>
+        <td data-title="'Banking'" sortable="'banking'">
+            {{station.banking}}
+        </td>
+        <td data-title="'Total'" sortable="'bike_stands'">
+            {{station.bike_stands}}
+        </td>
+        <td data-title="'Vélo Dispo'" sortable="'available_bikes'">
+            {{station.available_bikes}}
+        </td>
+        <td data-title="'Place Dispo'" sortable="'available_bike_stands'">
+            {{station.available_bike_stands}}
+        </td>
+        <td data-title="'Adresse'" sortable="'address'">
+            {{station.address}}
+        </td>
+        
+    </tr>
+</table>
