@@ -51,7 +51,7 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/">
-                        <span><img src="/WebReporting/assets/img/logo.png"> </span> Web Reporting 
+                        <span><img src="/assets/img/logo.png"> </span> Web Reporting 
                     </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
