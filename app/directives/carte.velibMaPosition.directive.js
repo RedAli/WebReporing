@@ -5,7 +5,7 @@ angular.module('carteModule').directive('cartevelibmaposition',
         return {
             restrict: 'E',
             templateUrl: 'app/templates/carte.velibMaPosition.template.html',
-            controller: function($scope,webReportingService){
+            controller: function($scope,webReportingService, leafletData){
                 angular.extend($scope, {
                     center: {
                         autoDiscover: true
@@ -26,23 +26,30 @@ angular.module('carteModule').directive('cartevelibmaposition',
                                 title: "Ma position",
                                 metersUnit: "métres", // string for metric units
                                 popup: "Vous êtes dans un  rayon de {distance} {unit}",  // text to appear if user clicks on circle
+                            },
+                            locateOptions: {
+                                setView: true
                             }
                         })
                     }
                 });
+                
+                $scope.getVelibAutourDeMoi = function(lat,lng){
 
-                webReportingService.getVelibDataByVilleAndDistance("Paris",48.87076889999999, 2.351436299999932, 200, function(data){
-                    angular.forEach(data, function(station){
-                        $scope.markers[station.fields.number] =
-                        {
-                            lat: station.fields.position[0],
-                            lng: station.fields.position[1],
-                            message: '<h3><i class="material-icons">directions_bike</i> '+station.fields.available_bikes+'<hr><i class="material-icons">local_parking</i> '+station.fields.available_bike_stands+'</h3>',
-                            focus: false,
-                            draggable: false
-                        } 
-                    }); 
-                });
+                    webReportingService.getVelibDataByVilleAndDistance("Paris",lat, lng, 200, function(data){
+                        angular.forEach(data, function(station){
+                            $scope.markers[station.fields.number] =
+                            {
+                                lat: station.fields.position[0],
+                                lng: station.fields.position[1],
+                                message: '<h3><i class="material-icons">directions_bike</i> '+station.fields.available_bikes+'<hr><i class="material-icons">local_parking</i> '+station.fields.available_bike_stands+'</h3>',
+                                focus: false,
+                                draggable: false
+                            } 
+                        });  
+                    });
+                }
+                
             }
         };
     }

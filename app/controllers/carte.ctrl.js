@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('carteModule',[]).controller('carteCtrl', 
-	['$scope','webReportingService',
-    function($scope,webReportingService) {
+	['$scope','webReportingService','leafletData',
+    function($scope,webReportingService,leafletData) {
 
     	$scope.titre ="Carte";
 

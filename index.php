@@ -111,6 +111,10 @@
         <script src="app/directives/carte.velibEurope.directive.js"></script>
 
         <script src="app/controllers/analyse.ctrl.js"></script>
+        <script src="app/directives/analyse.velibEurope.directive.js"></script>
+        <script src="app/directives/analyse.velibParis.directive.js"></script>
+        <script src="app/directives/analyse.velibArrondissement.directive.js"></script>
+
 
         <script src="app/controllers/creerGraphe.ctrl.js"></script>
 

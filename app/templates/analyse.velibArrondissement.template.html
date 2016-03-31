@@ -1,0 +1,20 @@
+<md-autocomplete
+  		md-selected-item="selectedItem"
+  		md-search-text="searchText"
+  		md-items="item in querySearch(searchText)"
+  		md-item-text="item.name"
+  		md-min-length="1"
+  		placeholder="Choisissez l'arrondissement">
+	<md-item-template>
+  		<span md-highlight-text="searchText">{{item.name}}</span>
+	</md-item-template>
+	<md-not-found>
+  		L'arrondissement "{{searchText}}" n'existe pas.
+	</md-not-found>
+</md-autocomplete>
+
+<md-button class="md-raised md-warn" ng-click="createChartVelibArrondissement()">
+	Générer chart
+</md-button>
+
+<highchart id="chart1" config="chartNombreVelibArrondissement"></highchart>

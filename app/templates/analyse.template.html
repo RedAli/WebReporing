@@ -1,17 +1,18 @@
 <h1 id="titre"><span class="glyphicon glyphicon-stats"></span> {{titre}}</h1>
 <md-tabs md-dynamic-height md-border-bottom>
-    <md-tab label="Vélo en Europe">
-        <md-content class="md-padding">
-			<highchart id="chart1" config="chartNombreVelibEurope"></highchart>
+    <md-tab label="Vélib en Europe" md-on-select="selectAnalyseVelibEurope()">
+        <md-content class="md-padding" ng-if="analyseVelibEuropeSelected">
+            <analysevelibeurope></analysevelibeurope>
         </md-content>
     </md-tab>
-    <md-tab label="Vélo à Paris">
-        <md-content class="md-padding">
+    <md-tab label="Vélib à Paris" md-on-select="selectAnalyseVelibParis()">
+        <md-content class="md-padding" ng-if="analyseVelibParisSelected" >
+            <analysevelibparis></analysevelibparis>
         </md-content>
     </md-tab>
-    <md-tab label="Graphe 3">
-        <md-content class="md-padding">
-          
+    <md-tab label="Vélib et Place" md-on-select="selectAnalyseVelibArrondissement()">
+        <md-content class="md-padding" ng-if="analyseVelibArrondissementSelected">
+            <analysevelibarrondissement></analysevelibarrondissement>
         </md-content>
     </md-tab>
 </md-tabs>
