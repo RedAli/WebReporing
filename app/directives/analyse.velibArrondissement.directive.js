@@ -37,7 +37,6 @@ angular.module('analyseModule').directive('analysevelibarrondissement',
                             return newItems;                            
                         }
                     });
-                    console.log($scope.arrondissement);
                     $scope.selectedItem = "";
                     $scope.querySearch = function (query) {
                         var results = query ? $scope.arrondissement.filter( createFilterFor(query) ) : $scope.arrondissement,

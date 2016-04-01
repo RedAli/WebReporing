@@ -1,51 +1,43 @@
-<h1 id="titre">{{titre}}</h1>
-<div class="container-fluid">
-<div class="row">
-    <div class="span9">
-       	<div class="row">
-            <highchart id="chart1" config="chartConfig" class="span9" ></highchart>
+<h1 id="titre"><span class="glyphicon glyphicon-plus-sign"></span> {{titre}}</h1>
+<br><br>
+<div class="row panel panel-default text-center">
+    <div class="panel-body">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Type Graphe</label>
+                <md-select ng-model="chartTypeSelected">
+                    <md-option ng-repeat="chartType in chartTypes" ng-value="{{chartType}}">
+                        {{chartType.id}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
         </div>
-        <!--<div class="row">
-            <label for="prettyJSON"><input id="prettyJSON" type="checkbox" ng-model="prettyJSON"> Pretty JSON</label>
+        <div class="col-sm-2">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Chart Series</label>
+                <md-select ng-model="chartSerieSelected">
+                    <md-option ng-repeat="chartSerie in chartSeries" ng-value="{{chartSerie}}">
+                        {{chartSerie.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
         </div>
-
-        <div class="row">
-              <pre ng-show="prettyJSON">{{ chartConfig | json }}</pre>
-              <pre ng-show="!prettyJSON">{{ chartConfig }}</pre>
+        <div class="col-sm-2">
+            <md-input-container>
+                <label>Title</label>
+                <input ng-model="chartTitleSelected">
+            </md-input-container>
         </div>
-
-        </div>-->
-        <div class="span4">
-            <div class="row">Title <input ng-model="chartConfig.title.text"></div>
-            <div class="row">Subtitle <input ng-model="chartConfig.subtitle.text"></div>
-            <!--<div class="row">Width <input ng-model="chartConfig.size.width"></div>
-            <div class="row">Height <input ng-model="chartConfig.size.height"></div>-->
-            <div class="row"><button ng-click="reflow()">reflow</button></div>
-            <div class="row">Default Type <select ng-model="chartConfig.options.chart.type" ng-options="t.id as t.title for t in chartTypes"></select></div>
-            <div class="row">Stack <select ng-model="chartConfig.options.plotOptions.series.stacking" ng-options="t.id as t.title for t in chartStack"></select></div>
-            <div class="row"><label><input type="checkbox" ng-model="chartConfig.loading"> is loading</label></div>
-            <div class="row"><label><input type="checkbox" ng-model="chartConfig.credits.enabled"> credits</label></div>
-            <h4>Series</h4>
-            <div class="row" ng-repeat="ser in chartSeries">
-              <div class="span12 well">
-                <div class="row">Title <input ng-model="ser.name"></div>
-                <div class="row">Type <select ng-model="ser.type" ng-options="t.id as t.title for t in chartTypes"></select></div>
-                <div class="row">Color <input ng-model="ser.color"></div>
-                <div class="row">Width <input ng-model="ser.lineWidth"></div>
-                <div class="row">Dash Style <select ng-model="ser.dashStyle" ng-options="ds.id as ds.title for ds in dashStyles"></select></div>
-                <div class="row"><label><input type="checkbox" ng-model="ser.connectNulls"> interpolate</label></div>
-                <div class="row"><button ng-click="removeSeries($index)">Delete</button></div>
-              </div>
-            </div>
-            <div class="row"><button ng-click="addSeries()">Add Series</button></div>
-            <div class="row"><button ng-click="addPoints()">Add Points to Random Series</button></div>
-            <div class="row"><button ng-click="removeRandomSeries()">Remove Random Series</button></div>
-            <div class="row"><button ng-click="toggleHighCharts()">HighChart/HighStock</button></div>
-            <div class="row"><button ng-click="replaceAllSeries()">Replace all series</button></div>
-            <div class="row">Min: <input type="number" ng-model="chartConfig.xAxis.currentMin"></div>
-            <div class="row">Max: <input type="number" ng-model="chartConfig.xAxis.currentMax"></div>
-          </div>
+        <div class="col-sm-2">
+            <md-button class="md-raised md-warn" ng-click="creerGraphique()">
+                <span class="glyphicon glyphicon-stats"></span>
+                Créer
+            </md-button>
         </div>
+        <div class="col-sm-2"></div>
     </div>
-
 </div>
+
+
+<highchart id="chart1" config="creerChart"></highchart>

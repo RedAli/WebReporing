@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('creerGrapheModule',[]).controller('creerGrapheCtrl', 
-	['$scope', '$filter', 'NgTableParams','$mdSidenav',
-    function($scope, $filter, NgTableParams, $mdSidenav) {
+	['$scope', '$filter', 'NgTableParams','$mdSidenav','webReportingService',
+    function($scope, $filter, NgTableParams, $mdSidenav,webReportingService) {
 
-    	$scope.titre ="Analyse";
+    	$scope.titre ="Créer un Graphe";
 
     	$scope.chartTypes = [
 		    {"id": "line", "title": "Line"},
@@ -16,100 +16,167 @@ angular.module('creerGrapheModule',[]).controller('creerGrapheCtrl',
 		    {"id": "pie", "title": "Pie"},
 		    {"id": "scatter", "title": "Scatter"}
 	  	];
-
-		$scope.dashStyles = [
-		    {"id": "Solid", "title": "Solid"},
-		    {"id": "ShortDash", "title": "ShortDash"},
-		    {"id": "ShortDot", "title": "ShortDot"},
-		    {"id": "ShortDashDot", "title": "ShortDashDot"},
-		    {"id": "ShortDashDotDot", "title": "ShortDashDotDot"},
-		    {"id": "Dot", "title": "Dot"},
-		    {"id": "Dash", "title": "Dash"},
-		    {"id": "LongDash", "title": "LongDash"},
-		    {"id": "DashDot", "title": "DashDot"},
-		    {"id": "LongDashDot", "title": "LongDashDot"},
-		    {"id": "LongDashDotDot", "title": "LongDashDotDot"}
-	  	];
+	  	$scope.chartTypeSelected ="";
 
 	  	$scope.chartSeries = [
-	    	{"name": "Some data", "data": [1, 2, 4, 7, 3]},
-	    	{"name": "Some data 3", "data": [3, 1, null, 5, 2], connectNulls: true},
-	    	{"name": "Some data 2", "data": [5, 2, 2, 3, 5], type: "column"},
-	    	{"name": "My Super Column", "data": [1, 1, 2, 3, 2], type: "column"}
+	  		{
+	  			"name":"Vélib Paris Status",
+	  			"type": "Paris",
+	  			"key": "status"
+	  		},
+	  		{
+	  			"name":"Vélib Paris Bonus",
+	  			"type": "Paris",
+	  			"key": "bonus"
+	  		},
 	  	];
+	  	$scope.chartSerieSelected ="";
 
-	  	$scope.chartStack = [
-	    	{"id": '', "title": "No"},
-	    	{"id": "normal", "title": "Normal"},
-	    	{"id": "percent", "title": "Percent"}
-	  	];
+	  	$scope.chartTitleSelected = "";
 
-	  	$scope.addPoints = function () {
-	    	var seriesArray = $scope.chartConfig.series;
-	    	var rndIdx = Math.floor(Math.random() * seriesArray.length);
-	    	seriesArray[rndIdx].data = seriesArray[rndIdx].data.concat([1, 10, 20])
+	  	$scope.creerGraphique = function(){
+	  		
+	  		webReportingService.getVelibDataByVille($scope.chartSerieSelected.type, function(stations){
+	  			if($scope.chartSerieSelected.key === "status"){
+		  			Object.defineProperty($scope, 'dataSeriesStatus', {
+		  				configurable: true,
+	                    get: function(){
+	                        var list = {};
+	                        stations.forEach(function (item) {
+	                            var arrond = item.address.match(/\b\d{5}\b/g)[0];
+	                            if (list[arrond] === undefined) {
+	                                list[arrond] = 1;
+	                                if(item.status === "OPEN"){
+	                                	list['open'+arrond] = 1;
+	                                	list['close'+arrond] = 0;
+	                                }
+	                                else{
+	                                	list['close'+arrond] = 1;
+	                                	list['open'+arrond] = 0;
+	                                }
+	                            } else {
+	                                list[arrond] += 1;
+	                                if(item.status === "OPEN"){
+	                                	list['open'+arrond] += 1;
+	                                }
+	                                else{
+	                                	list['close'+arrond] += 1;
+	                                }
+	                            }
+	                        });          
+	                        var newItems = [];    
+	                        Object.keys(list).forEach(function(key){
+	                            if(key.length == 5){  
+	                                newItems.push({  
+	                                    name : key,
+	                                    data: [list['open'+key],list['close'+key]]
+	                                });
+	                            }
+	                        });
+	                        return newItems;                            
+	                    }
+	                });
+					$scope.creerChart = {
+				    	options: {
+					      	chart: {
+					        	type: $scope.chartTypeSelected.id
+					      	},
+					      	plotOptions: {
+					        	series: {
+					          		stacking: ''
+					        	}
+					      	}
+					    },
+					    xAxis: {
+                            categories: ['Station OPEN', 'Station CLOSE',],
+                            title: {
+                                text: null
+                            }
+                        },
+				    	series: $scope.dataSeriesStatus,
+			    		title: {
+			      			text: $scope.chartTitleSelected
+			    		},
+			    		credits: {
+			      			enabled: true
+			    		},
+			    		loading: false,
+						size: {}
+				  	};
+
+				}
+				else if($scope.chartSerieSelected.key == "bonus"){
+		  			Object.defineProperty($scope, 'dataSeriesBonus', {
+		  				configurable: true,
+	                    get: function(){
+	                        var list = {};
+	                        stations.forEach(function (item) {
+	                            var arrond = item.address.match(/\b\d{5}\b/g)[0];
+	                             if (list[arrond] === undefined) {
+	                                list[arrond] = 1;
+	                                if(item.bonus){
+	                                	list['true'+arrond] = 1;
+	                                	list['false'+arrond] = 0;
+	                                }
+	                                else{
+	                                	list['false'+arrond] = 1;
+	                                	list['true'+arrond] = 0;
+	                                }
+	                            } else {
+	                                list[arrond] += 1;
+	                                if(item.status){
+	                                	list['true'+arrond] += 1;
+	                                }
+	                                else{
+	                                	list['false'+arrond] += 1;
+	                                }
+	                            }
+	                        });          
+	                        var newItems = [];    
+	                        Object.keys(list).forEach(function(key){
+	                            if(key.length == 5){  
+	                                newItems.push({  
+	                                    name : key,
+	                                    data: [list['true'+key],list['false'+key]]
+	                                });
+	                            }
+	                        });
+	                        return newItems;                            
+	                    }
+	                });
+					$scope.creerChart = {
+				    	options: {
+					      	chart: {
+					        	type: $scope.chartTypeSelected.id
+					      	},
+					      	plotOptions: {
+					        	series: {
+					          		stacking: ''
+					        	}
+					      	}
+					    },
+					    xAxis: {
+                            categories: ['Bonus TRUE', 'Bonus FALSE',],
+                            title: {
+                                text: null
+                            }
+                        },
+				    	series: $scope.dataSeriesBonus,
+			    		title: {
+			      			text: $scope.chartTitleSelected
+			    		},
+			    		credits: {
+			      			enabled: true
+			    		},
+			    		loading: false,
+						size: {}
+				  	};
+
+				}
+	  		});
+	  		
+
 	  	};
-
-	  	$scope.addSeries = function () {
-	    	var rnd = []
-	    	for (var i = 0; i < 10; i++) {
-	      		rnd.push(Math.floor(Math.random() * 20) + 1)
-	   		}
-	    	$scope.chartConfig.series.push({
-	      		data: rnd
-	    	});
-	  	};
-
-	  	$scope.removeRandomSeries = function () {
-	    	var seriesArray = $scope.chartConfig.series;
-	    	var rndIdx = Math.floor(Math.random() * seriesArray.length);
-	    	seriesArray.splice(rndIdx, 1)
-	  	}
-
-	  	$scope.removeSeries = function (id) {
-	    	var seriesArray = $scope.chartConfig.series;
-	    	seriesArray.splice(id, 1)
-	  	}
-
-	  	$scope.toggleHighCharts = function () {
-	    	this.chartConfig.useHighStocks = !this.chartConfig.useHighStocks
-	  	}
-
-	  	$scope.replaceAllSeries = function () {
-	    	var data = [
-	      		{ name: "first", data: [10] },
-	      		{ name: "second", data: [3] },
-	      		{ name: "third", data: [13] }
-	    	];
-	    	$scope.chartConfig.series = data;
-	  	};
-
-	  	$scope.chartConfig = {
-	    	options: {
-		      	chart: {
-		        	type: 'areaspline'
-		      	},
-		      	plotOptions: {
-		        	series: {
-		          		stacking: ''
-		        	}
-		      	}
-		    },
-	    	series: $scope.chartSeries,
-    		title: {
-      			text: 'Hello'
-    		},
-    		credits: {
-      			enabled: true
-    		},
-    		loading: false,
-			size: {}
-	  	}
-
-	  	$scope.reflow = function () {
-	    	$scope.$broadcast('highchartsng.reflow');
-	  	};
-
     	
     }
 ]);
