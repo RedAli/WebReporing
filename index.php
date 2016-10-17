@@ -5,7 +5,7 @@
         <title>Web Reporting</title>        
         <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <base href="/">
+        <base href="/WebReporting/">
 
 
         <!--JS-->
@@ -50,38 +50,38 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/">
-                        <span><img src="/assets/img/logo.png"> </span> Web Reporting 
+                    <a class="navbar-brand" href="/WebReporting/">
+                        <span><img src="/WebReporting/assets/img/logo.png"> </span> Web Reporting 
                     </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/">
+                        <a href="/WebReporting/">
                             <span class="glyphicon glyphicon-home"></span> Accueil
                         </a>
                     </li>
                     <li>
-                        <a href="/informations">
+                        <a href="/WebReporting/informations">
                             <span class="glyphicon glyphicon-info-sign"></span> Informations
                         </a>
                     </li>
                     <li>
-                        <a href="/tableau">
+                        <a href="/WebReporting/tableau">
                             <span class="glyphicon glyphicon-th"></span> Tableau
                         </a>
                     </li>
                     <li>
-                        <a href="/carte">
+                        <a href="/WebReporting/carte">
                             <span class="glyphicon glyphicon-globe"></span> Carte
                         </a>
                     </li>
                     <li>
-                        <a href="/analyse">
+                        <a href="/WebReporting/analyse">
                             <span class="glyphicon glyphicon-stats"></span> Analyses
                         </a>
                     </li>
                     <li>
-                        <a href="/creer-graphe">
+                        <a href="/WebReporting/creer-graphe">
                             <span class="glyphicon glyphicon-plus-sign"></span> Créer
                         </a>
                     </li>
