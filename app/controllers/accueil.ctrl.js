@@ -6,7 +6,7 @@ angular.module('accueilModule',[]).controller('accueilCtrl',
 
     	$scope.etudiants = [
     		{
-    			photo: "/WebReporting/assets/img/ali.jpg",
+    			photo: "/assets/img/ali.jpg",
     			nom: "Ali REDJAL"
     		}
     	];
@@ -14,15 +14,15 @@ angular.module('accueilModule',[]).controller('accueilCtrl',
 
         $scope.slides = [
             {
-                image: '/WebReporting/assets/img/angularjs.png',
+                image: '/assets/img/angularjs.png',
                 id: 0
             },
             {
-                image: '/WebReporting/assets/img/highcharts.png',
+                image: '/assets/img/highcharts.png',
                 id: 1
             },
             {
-                 image: '/WebReporting/assets/img/leaflet.png',
+                 image: '/assets/img/leaflet.png',
                 id: 2
             }
         ];

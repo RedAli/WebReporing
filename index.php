@@ -5,7 +5,7 @@
         <title>Web Reporting</title>        
         <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
-        <base href="/WebReporting/">
+        <base href="/">
 
 
         <!--JS-->
@@ -50,38 +50,38 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/WebReporting/">
-                        <span><img src="/WebReporting/assets/img/logo.png"> </span> Web Reporting 
+                    <a class="navbar-brand" href="/">
+                        <span><img src="/assets/img/logo.png"> </span> Web Reporting 
                     </a>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/WebReporting/">
+                        <a href="/">
                             <span class="glyphicon glyphicon-home"></span> Accueil
                         </a>
                     </li>
                     <li>
-                        <a href="/WebReporting/informations">
+                        <a href="/informations">
                             <span class="glyphicon glyphicon-info-sign"></span> Informations
                         </a>
                     </li>
                     <li>
-                        <a href="/WebReporting/tableau">
+                        <a href="/tableau">
                             <span class="glyphicon glyphicon-th"></span> Tableau
                         </a>
                     </li>
                     <li>
-                        <a href="/WebReporting/carte">
+                        <a href="/carte">
                             <span class="glyphicon glyphicon-globe"></span> Carte
                         </a>
                     </li>
                     <li>
-                        <a href="/WebReporting/analyse">
+                        <a href="/analyse">
                             <span class="glyphicon glyphicon-stats"></span> Analyses
                         </a>
                     </li>
                     <li>
-                        <a href="/WebReporting/creer-graphe">
+                        <a href="/creer-graphe">
                             <span class="glyphicon glyphicon-plus-sign"></span> Créer
                         </a>
                     </li>
@@ -99,7 +99,7 @@
         <script src="app/route.js"></script>
         <script src="app/controllers/accueil.ctrl.js"></script>
 
-        <script src="app/services/webReporting.service.js"></script>
+        <script src="app/services.service.js"></script>
 
 
         <script src="app/controllers/informations.ctrl.js"></script>
