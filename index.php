@@ -9,34 +9,34 @@
 
 
         <!--JS-->
-        <script src="assets/libs/jquery.min.js"></script>
-        <script src="assets/libs/angular.js"></script>
-        <script src="assets/libs/highstock.src.js"></script>
-        <script src="assets/libs/highcharts-ng.js"></script>
+        <script src="/assets/libs/jquery.min.js"></script>
+        <script src="/assets/libs/angular.js"></script>
+        <script src="/assets/libs/highstock.src.js"></script>
+        <script src="/assets/libs/highcharts-ng.js"></script>
 
-        <script src="assets/libs/leaflet.js"></script>
+        <script src="/assets/libs/leaflet.js"></script>
         
-        <script src="assets/libs/angular-material.min.js"></script>
-        <script src="assets/libs/angular-messages.min.js"></script>
-        <script src="assets/libs/angular-animate.min.js"></script>
-        <script src="assets/libs/angular-aria.min.js"></script>
-        <script src="assets/libs/angular-route.js"></script>
-        <script src="assets/libs/ng-table.min.js"></script>
-        <script src="assets/libs/ui-bootstrap.min.js"></script>
-        <script src="assets/libs/angular-leaflet-directive.min.js"></script>
-        <script src="assets/libs/ui-bootstrap-tpls-1.2.5.js"></script>
-        <script src="assets/libs/L.Control.Locate.min.js"></script>
+        <script src="/assets/libs/angular-material.min.js"></script>
+        <script src="/assets/libs/angular-messages.min.js"></script>
+        <script src="/assets/libs/angular-animate.min.js"></script>
+        <script src="/assets/libs/angular-aria.min.js"></script>
+        <script src="/assets/libs/angular-route.js"></script>
+        <script src="/assets/libs/ng-table.min.js"></script>
+        <script src="/assets/libs/ui-bootstrap.min.js"></script>
+        <script src="/assets/libs/angular-leaflet-directive.min.js"></script>
+        <script src="/assets/libs/ui-bootstrap-tpls-1.2.5.js"></script>
+        <script src="/assets/libs/L.Control.Locate.min.js"></script>
 
 
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/angular-material.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/ng-table.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/leaflet.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/angular-material.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/ng-table.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/leaflet.css">
 
-        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/material-icons.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/material-icons.css">
 
         
         
@@ -99,7 +99,7 @@
         <script src="app/route.js"></script>
         <script src="app/controllers/accueil.ctrl.js"></script>
 
-        <script src="app/services.service.js"></script>
+        <script src="app/services/services.service.js"></script>
 
 
         <script src="app/controllers/informations.ctrl.js"></script>
