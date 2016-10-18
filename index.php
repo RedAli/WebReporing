@@ -99,7 +99,7 @@
         <script src="app/route.js"></script>
         <script src="app/controllers/accueil.ctrl.js"></script>
 
-        <script src="app/services/services.service.js"></script>
+        <script src="app/services/webReporting.service.js"></script>
 
 
         <script src="app/controllers/informations.ctrl.js"></script>
